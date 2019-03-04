@@ -28,6 +28,6 @@ done
 
 echo '-------------------   Converting to md - Completed!  -------------------------'
 
-python post_processing.py "$md_source_folder/html_dest_folder/" "$md_dest_folder"
+python post_processing.py "$md_source_folder/<html_dest_folder_name>/" "$md_dest_folder"
 
 
