@@ -1,16 +1,15 @@
 #!/bin/bash
 
+#NOTE: Add the "/" at the end of all folder paths. 
+
 #The folder path where the unmodified confluence HTML files are stored. 
-html_source_folder='/home/shani/RnD/TC/html_to_md_supporter/AM260'
+html_source_folder='/home/shani/RnD/TC/html_to_md_supporter/AM260/'
 
 #The destination folder for the pre processed HTML pages.
 html_destination_folder='/home/shani/RnD/TC/html_to_md_supporter/html_dest_folder/'
 
 #Path to the conversion tool
 conversionToolFolderPath='/home/shani/RnD/github_conv/confluence-to-markdown'
-
-#Path to the modified HTML files
-FILES='/home/shani/RnD/github_conv/convertedFiles'
 
 #Path to the folder that contains the md files generated from the confluence-to-markdown tool
 md_source_folder='/home/shani/RnD/TC/html_to_md_supporter/md_source_folder/'
