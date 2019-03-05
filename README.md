@@ -12,7 +12,8 @@ Main functions of the tool:
 
 ## Pre-requisites to run the tool
 1. Install python
-2. install the [confluence-to-markdown](https://github.com/meridius/confluence-to-markdown) tool.
+2. Install the [confluence-to-markdown](https://github.com/meridius/confluence-to-markdown) tool.
+3. Install the beautifulsoup package by running the following command: "pip install beautifulsoup4".
 
 ## How to run the tool
 1. Open start.sh.
