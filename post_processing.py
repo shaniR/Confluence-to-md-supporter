@@ -58,6 +58,10 @@ for f in md_files:
 		lines[id] = currentLine
 
 
+        fileNameLength =len(fileName)
+	fileName = fileName[1:fileNameLength].replace('_', '-').replace('-.md', '.md') 
+	fileName = fileName[0].lower() + fileName[1:]
+
         fileName = md_dest_folder+fileName
 
 	with open(fileName, "wb") as file:
