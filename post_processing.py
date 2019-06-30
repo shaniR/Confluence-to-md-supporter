@@ -28,7 +28,6 @@ for f in md_files:
     f = open(md_source_path + f, 'r')
     lines = f.readlines()
     f.close()
-
     # Formatting content inside the terms above
     for id, currentLine in enumerate(lines):
         if(not insideMacro):
@@ -64,16 +63,16 @@ for f in md_files:
                 insideMacro =False 
         lines[id] = currentLine
 
-fileNameLength = len(fileName)
-#Replace _ with - in the file name.
-fileName = fileName[1:fileNameLength].replace('_', '-').replace('-.md', '.md')
-fileName = fileName[0].lower() + fileName[1:]
+    fileNameLength = len(fileName)
+    #Replace _ with - in the file name.
+    fileName = fileName[1:fileNameLength].replace('_', '-').replace('-.md', '.md')
+    fileName = fileName[0].lower() + fileName[1:]
+    fileName = md_dest_folder + fileName
 
-fileName = md_dest_folder + fileName
 
-with open(fileName, "wb") as file:
-    for item in lines:
-        if ("TEST" not in item):
-            file.write("%s" % item)
+    with open(fileName, "wb") as file:
+       for item in lines:
+           if ("TEST" not in item):
+               file.write("%s" % item)
 
 print '-------------------   Post processing completed!  -------------------------'
