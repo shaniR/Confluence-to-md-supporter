@@ -30,7 +30,6 @@ for f in md_files:
     f = open(md_source_path + f, 'r')
     lines = f.readlines()
     f.close()
-
     # Formatting content inside the terms above
     for id, currentLine in enumerate(lines):
         if(not insideMacro):
