@@ -1,5 +1,6 @@
 import sys, os
 import ntpath
+import re
 #import ptvsd
 
 # 5678 is the default attach port in the VS Code debug configurations
@@ -21,6 +22,7 @@ for f in md_files:
     insideMacro = False
     leadingSpaces = 0
     threeQuotes = '```'
+    skipLine = False;
 
     terms = ["!!! tip", "!!! warning", "!!! info", "!!! note"]
 
@@ -54,6 +56,9 @@ for f in md_files:
                     leftSpaces =0 
                 continue 
         if (inCodeBlock or insideMacro):
+            if(currentLine == "\n"):
+                currentLine = "TEST"
+            else:      
                 string_length=len(currentLine)+leadingSpaces    # adding extra spaces
                 currentLine=currentLine.rjust(string_length)
         # reset counters
@@ -62,18 +67,23 @@ for f in md_files:
                 inCodeBlock =False
                 leftSpaces =0
                 insideMacro =False 
+        # remove the width from the images e.g. {width=149} 
+        indexInString = currentLine.find("{width=")
+        if(indexInString != -1):
+            currentLine = currentLine[0 :indexInString]
+
         lines[id] = currentLine
 
-fileNameLength = len(fileName)
-#Replace _ with - in the file name.
-fileName = fileName[1:fileNameLength].replace('_', '-').replace('-.md', '.md')
-fileName = fileName[0].lower() + fileName[1:]
+    fileNameLength = len(fileName)
+    #Replace _ with - in the file name.
+    fileName = fileName[1:fileNameLength].replace('_', '-').replace('-.md', '.md')
+    fileName = fileName.lower()
 
-fileName = md_dest_folder + fileName
+    fileName = md_dest_folder + fileName
 
-with open(fileName, "wb") as file:
-    for item in lines:
-        if ("TEST" not in item):
-            file.write("%s" % item)
+    with open(fileName, "wb") as file:
+        for item in lines:
+            if ("TEST" not in item):
+                file.write("%s" % item)
 
 print '-------------------   Post processing completed!  -------------------------'
